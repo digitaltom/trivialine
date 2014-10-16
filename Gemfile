@@ -31,6 +31,6 @@ end
 group :production do
   gem 'newrelic_rpm'
   gem 'pg'
-  gem 'heroku_rails_deflate' # compress output
+  #gem 'heroku_rails_deflate' # compress output
   gem 'rails_stdout_logging'
 end

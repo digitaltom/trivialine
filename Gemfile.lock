@@ -56,10 +56,6 @@ GEM
     heroku-api (0.3.19)
       excon (~> 0.38)
       multi_json (~> 1.8)
-    heroku_rails_deflate (1.0.3)
-      actionpack (>= 3.2.13)
-      activesupport (>= 3.2.13)
-      rack (>= 1.4.5)
     hike (1.2.3)
     i18n (0.6.11)
     jbuilder (2.2.2)
@@ -153,7 +149,6 @@ DEPENDENCIES
   coffee-rails (~> 4.0.0)
   haml
   heroku
-  heroku_rails_deflate
   jbuilder (~> 2.0)
   jquery-rails
   newrelic_rpm
