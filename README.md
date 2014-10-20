@@ -22,3 +22,5 @@ http://trivialine.herokuapp.com/
 Logs: 
 `heroku logs -t`
 
+Console: 
+`heroku run rails console`

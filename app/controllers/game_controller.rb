@@ -3,6 +3,7 @@ class GameController < ApplicationController
   include Tubesock::Hijack
 
   def socket
+
     hijack do |tubesock|
 
       # TODO: create different channels
@@ -12,6 +13,11 @@ class GameController < ApplicationController
       redis_thread = Thread.new do
         Redis.new.subscribe 'game' do |on|
           on.message do |channel, message|
+
+            # TODO: Types:
+            # players: {names: []}
+            # answer: {player: '', question_id: '', answer_id: '', correct: ''}
+
             tubesock.send_data message
           end
         end
@@ -19,6 +25,19 @@ class GameController < ApplicationController
 
       # Inbound
       tubesock.onmessage do |message|
+
+        message = JSON.parse(message)
+        logger.debug "Incoming websocket: #{message}"
+
+        # TODO: Types:
+        # join: {name: ''}
+        # answer: {player: '', question_id: '', answer_id: ''}
+
+
+
+
+
+        #tubesock.send_data 'direct'
         Redis.new.publish 'game', message
       end
 
