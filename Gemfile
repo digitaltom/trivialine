@@ -11,6 +11,7 @@ gem 'haml'
 gem 'puma'
 gem 'tubesock'
 gem 'heroku'
+gem 'redis'
 
 gem 'jquery-rails'
 gem 'turbolinks'
@@ -23,14 +24,12 @@ group :development, :test do
 end
 
 group :development do
-  gem 'newrelic_rpm'
   gem 'byebug'
-  gem 'sprockets_better_errors' # unhides asset mistakes
 end
 
 group :production do
   gem 'newrelic_rpm'
   gem 'pg'
-  #gem 'heroku_rails_deflate' # compress output
+  gem 'heroku_rails_deflate' # compress output
   gem 'rails_stdout_logging'
 end
