@@ -19,3 +19,6 @@ http://trivialine.herokuapp.com/
 `heroku git:remote -a trivialine`
 `git push heroku master`
 
+Logs: 
+`heroku logs -t`
+
