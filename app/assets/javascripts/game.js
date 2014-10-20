@@ -5,12 +5,12 @@ $(document).ready(function () {
   if (!("WebSocket" in window)) {
     console.log('Socket not available')
   } else {
-    connect()
+    socket_connect()
   }
 })
 
 
-function connect() {
+function socket_connect() {
   try {
 
     socket = new WebSocket(host)
@@ -32,8 +32,11 @@ function connect() {
   }
 }
 
+function socket_close() {
+  socket.close()
+}
 
-function send(text){
+function socket_send(text){
 
   try{
     socket.send(text)
