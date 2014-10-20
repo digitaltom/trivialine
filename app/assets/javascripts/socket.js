@@ -4,8 +4,6 @@ var socket
 $(document).ready(function () {
   if (!("WebSocket" in window)) {
     console.log('Socket not available')
-  } else {
-    socket_connect()
   }
 })
 

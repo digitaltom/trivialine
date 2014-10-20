@@ -2,6 +2,9 @@ class GameController < ApplicationController
 
   include Tubesock::Hijack
 
+  # TODO: workaround for Redis limitation on heroku
+  $players = Set.new
+
   def socket
 
     hijack do |tubesock|
@@ -14,7 +17,7 @@ class GameController < ApplicationController
         Redis.new.subscribe 'game' do |on|
           on.message do |channel, message|
 
-            # TODO: Types:
+            # Outgoing Types:
             # players: []
 
             logger.debug "Outgoing websocket to #{player_name}: #{message}"
@@ -37,8 +40,8 @@ class GameController < ApplicationController
         case type
         when :join
           player_name = content[:name]
-          Redis.new.sadd :players, content[:name]
-          Redis.new.publish 'game', { players: REDIS.smembers(:players) }
+          $players.add( content[:name] )
+          Redis.new.publish 'game', { players: $players.to_a }
         else
           logger.debug "Unhandled socket message type: #{type}"
           #tubesock.send_data 'direct'
@@ -50,7 +53,7 @@ class GameController < ApplicationController
       # stop listening when client leaves
       tubesock.onclose do
         logger.debug "Socket close from: #{player_name}"
-        Redis.new.srem :players, player_name
+        $players.delete( player_name )
         redis_thread.kill
       end
 
