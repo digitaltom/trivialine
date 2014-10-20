@@ -14,7 +14,7 @@ class GameController < ApplicationController
       # Outbound
       # Each player is using his on redis thread
       redis_thread = Thread.new do
-        Redis.new.subscribe 'game' do |on|
+        Redis.new(:host => REDIS_URL.host, :port => REDIS_URL.port, :password => REDIS_URL.password).subscribe 'game' do |on|
           on.message do |channel, message|
 
             # Outgoing Types:
