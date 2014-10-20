@@ -12,9 +12,10 @@ class GameController < ApplicationController
       player_name = nil
 
       # Outbound
-      # Each player is using his on redis thread
+      # Each player is using his own redis thread with extra redis connection
       redis_thread = Thread.new do
-        Redis.new(:host => REDIS_URL.host, :port => REDIS_URL.port, :password => REDIS_URL.password).subscribe 'game' do |on|
+        redis = Redis.new(:host => REDIS_URL.host, :port => REDIS_URL.port, :password => REDIS_URL.password)
+        redis.subscribe 'game' do |on|
           on.message do |channel, message|
 
             # Outgoing Types:
@@ -42,7 +43,8 @@ class GameController < ApplicationController
           $players.delete( player_name ) if player_name
           player_name = content[:name]
           $players.add( content[:name] )
-          REDIS.publish 'game', { players: $players.to_a }
+          REDIS.sadd :players, content[:name]
+          REDIS.publish 'game', { players: REDIS.smembers( :players ) }
         else
           logger.debug "Unhandled socket message type: #{type}"
           #tubesock.send_data 'direct'
