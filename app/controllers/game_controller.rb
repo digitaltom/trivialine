@@ -37,7 +37,7 @@ class GameController < ApplicationController
         case type
         when :join
           player_name = content[:name]
-          REDIS.sadd :players, content[:name]
+          Redis.new.sadd :players, content[:name]
           Redis.new.publish 'game', { players: REDIS.smembers(:players) }
         else
           logger.debug "Unhandled socket message type: #{type}"
@@ -50,7 +50,7 @@ class GameController < ApplicationController
       # stop listening when client leaves
       tubesock.onclose do
         logger.debug "Socket close from: #{player_name}"
-        REDIS.srem :players, player_name
+        Redis.new.srem :players, player_name
         redis_thread.kill
       end
 
