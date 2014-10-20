@@ -36,11 +36,11 @@ function socket_close() {
   socket.close()
 }
 
-function socket_send(type, text) {
+function socket_send(type, content) {
 
   var msg = {
     type: type,
-    text: text
+    content: content
   }
 
   try {

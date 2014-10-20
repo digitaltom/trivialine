@@ -6,7 +6,7 @@ class GameController < ApplicationController
 
     hijack do |tubesock|
 
-      # TODO: create different channels
+      player_name = nil
 
       # Outbound
       # Each player is using his on redis thread
@@ -15,9 +15,9 @@ class GameController < ApplicationController
           on.message do |channel, message|
 
             # TODO: Types:
-            # players: {names: []}
-            # answer: {player: '', question_id: '', answer_id: '', correct: ''}
+            # players: []
 
+            logger.debug "Outgoing websocket to #{player_name}: #{message}"
             tubesock.send_data message
           end
         end
@@ -26,23 +26,31 @@ class GameController < ApplicationController
       # Inbound
       tubesock.onmessage do |message|
 
-        message = JSON.parse(message)
-        logger.debug "Incoming websocket: #{message}"
+        message = JSON.parse(message, :symbolize_names => true)
+        logger.debug "Incoming websocket from #{player_name}: #{message}"
+        next unless message[:type] && message[:content].kind_of?(Hash)
+        type, content = message[:type].to_sym, message[:content]
 
-        # TODO: Types:
-        # join: {name: ''}
-        # answer: {player: '', question_id: '', answer_id: ''}
+        # Types:
+        # join, content: {name: ''}
 
+        case type
+        when :join
+          player_name = content[:name]
+          REDIS.sadd :players, content[:name]
+          Redis.new.publish 'game', { players: REDIS.smembers(:players) }
+        else
+          logger.debug "Unhandled socket message type: #{type}"
+          #tubesock.send_data 'direct'
+          Redis.new.publish 'game', { relay: message}
+        end
 
-
-
-
-        #tubesock.send_data 'direct'
-        Redis.new.publish 'game', message
       end
 
       # stop listening when client leaves
       tubesock.onclose do
+        logger.debug "Socket close from: #{player_name}"
+        REDIS.srem :players, player_name
         redis_thread.kill
       end
 
