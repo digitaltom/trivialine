@@ -9,6 +9,7 @@ $(document).ready(function () {
 
 
 function socket_connect() {
+  if (undefined != socket && socket.readyState == 1) return socket
   try {
 
     socket = new WebSocket(host)
@@ -25,13 +26,15 @@ function socket_connect() {
       console.log('Socket Status: ' + socket.readyState + ' (Closed)')
     }
 
+    return socket
+
   } catch (exception) {
     console.log('Socket Error: ' + exception)
   }
 }
 
 function socket_close() {
-  socket.close()
+  if (undefined != socket) socket.close()
 }
 
 function socket_send(type, content) {
