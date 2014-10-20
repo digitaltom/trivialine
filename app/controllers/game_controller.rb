@@ -42,11 +42,11 @@ class GameController < ApplicationController
           $players.delete( player_name ) if player_name
           player_name = content[:name]
           $players.add( content[:name] )
-          Redis.new.publish 'game', { players: $players.to_a }
+          REDIS.publish 'game', { players: $players.to_a }
         else
           logger.debug "Unhandled socket message type: #{type}"
           #tubesock.send_data 'direct'
-          Redis.new.publish 'game', { relay: message }
+          REDIS.publish 'game', { relay: message }
         end
 
       end
