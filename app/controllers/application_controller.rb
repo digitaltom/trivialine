@@ -5,6 +5,7 @@ class ApplicationController < ActionController::Base
 
 
   def index
+    @players = REDIS.smembers( :players )
     render :welcome
   end
 
