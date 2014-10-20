@@ -2,9 +2,6 @@ class GameController < ApplicationController
 
   include Tubesock::Hijack
 
-  # TODO: workaround for Redis limitation on heroku
-  $players = Set.new
-
   def socket
 
     hijack do |tubesock|
@@ -40,9 +37,8 @@ class GameController < ApplicationController
 
         case type
         when :join
-          $players.delete( player_name ) if player_name
+          REDIS.srem :players, player_name
           player_name = content[:name]
-          $players.add( content[:name] )
           REDIS.sadd :players, content[:name]
           REDIS.publish 'game', { players: REDIS.smembers( :players ) }
         else
@@ -56,7 +52,7 @@ class GameController < ApplicationController
       # stop listening when client leaves
       tubesock.onclose do
         logger.debug "Socket close from: #{player_name}"
-        $players.delete( player_name )
+        REDIS.srem :players, player_name
         redis_thread.kill
       end
 
