@@ -16,10 +16,15 @@ function message_handler (msg) {
   message = JSON.parse(msg.data)
 
   if (message['players']) {
-    $('ul#players').html('')
-    message['players'].forEach(function(player) {
-      $('ul#players').append('<li>' + player + '</li>')
-    })
+    update_players (message['players'])
   }
 
+}
+
+
+function update_players (players) {
+  $('ul#players').html('')
+  message['players'].forEach(function(player) {
+    $('ul#players').append('<li>' + player + '</li>')
+  })
 }

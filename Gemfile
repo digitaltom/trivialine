@@ -27,7 +27,7 @@ group :development, :test do
 end
 
 group :development do
-  gem 'byebug'
+  gem 'byebug', require: false
 end
 
 group :production do
