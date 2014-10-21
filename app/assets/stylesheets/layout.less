@@ -14,10 +14,13 @@ body {
 }
 
 header {
-  background: #222;
+  background: @header;
+  box-sizing: border-box;
   height: 60px;
   padding: 1.3em;
-  box-sizing: border-box;
+  position: absolute;
+  top: 0;
+  width: 100%
 }
 
 header img {
@@ -70,5 +73,14 @@ a {
 
 .hidden {
     display: none;
+}
+
+.testArea {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 280px;
+  background: rgba(235,90,90,0.5);
+  height: 70%
 }
 
