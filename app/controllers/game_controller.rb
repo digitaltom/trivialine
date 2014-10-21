@@ -41,6 +41,8 @@ class GameController < ApplicationController
           player_name = content[:name]
           REDIS.sadd :players, content[:name]
           REDIS.publish 'game', { players: REDIS.smembers( :players ) }.to_json
+        when :chat
+          REDIS.publish 'game', { chat: {sender: player_name, message: content[:message]} }.to_json
         else
           logger.debug "Unhandled socket message type: #{type}"
           #tubesock.send_data 'direct'

@@ -115,3 +115,7 @@ ul.horizontal li {
   text-decoration: none;
 }
 
+.hidden {
+    display: none;
+}
+

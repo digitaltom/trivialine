@@ -5,9 +5,15 @@ $(document).on('click', '#join_game', function () {
 
   socket.onopen = function () {
     socket_send('join', {name: $('#player_name').val()})
+    logged_in()
   }
   socket.onmessage = message_handler
 
+})
+
+
+$(document).on('click', '#chat_send', function () {
+    socket_send('chat', {message: $('#chat_input').val()})
 })
 
 
@@ -22,8 +28,16 @@ function message_handler(msg) {
   } else if (message['answer']) {
     show_answer(message['answer'])
     // if answer is correct, render next question
+  } else if (message['chat']) {
+    show_chat(message['chat'])
   }
 
+}
+
+
+function logged_in() {
+  $('#player-name').hide()
+  $('#chat').show()
 }
 
 
@@ -42,4 +56,9 @@ function show_question(question) {
 
 function show_answer(answer) {
 
+}
+
+
+function show_chat(chat) {
+  $('#chat-content').append(chat['sender'] + ': ' + chat['message'] + '<br/>')
 }

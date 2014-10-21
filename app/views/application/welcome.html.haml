@@ -1,7 +1,8 @@
-Your name:
-%input{name: 'player_name', id: 'player_name'}
-%button{id: 'join_game'}
-  Join
+#player-name
+  Your name:
+  %input{name: 'player_name', id: 'player_name'}
+  %button{id: 'join_game'}
+    Join
 
 
 %br
@@ -11,5 +12,11 @@ Players waiting:
   - @players.each do |name|
     %li= name
 
+#chat.hidden
+  #chat-controls
+    %input{name: 'chat', id: 'chat_input'}
+    %button{id: 'chat_send'}
+      Say
+  #chat-content
 
 = image_tag 'site1c.jpg'
