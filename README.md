@@ -11,12 +11,13 @@ http://trivialine.herokuapp.com/
 
 `sudo bundle install`
 `sudo rcredis start`
+`rake db:setup # setting up the database and adding some initial questions`
 `rails s`
 
 
 == Deploy
 
-`heroku git:remote -a trivialine`
+`heroku git:remote -a trivialine # only needed once`
 `git push heroku master`
 
 Logs: 

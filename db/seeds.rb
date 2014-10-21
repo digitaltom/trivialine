@@ -5,3 +5,13 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+questions = YAML::load(File.open(File.join(Rails.root, 'config', 'questions.yml')))
+questions['questions'].each do  |question|
+  Question.create(question: question['question'],
+                  answer1: question['answer1'],
+                  answer2: question['answer2'],
+                  answer3: question['answer3'],
+                  answer4: question['answer4'],
+                  solution: question['solution'])
+end
