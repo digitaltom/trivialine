@@ -10,7 +10,7 @@
 <body>
   <header>
     <div class="container">
-      <img src="assets/logo.png" />
+      <%= image_tag 'logo.png' %>
       <ul class="horizontal">
         <li>
           <a href="#" id="howto" class="btn-default">How to</a>
@@ -29,10 +29,10 @@
   <footer>
     Designed and developed by CKTZ team for SUSE <a href="https://hackweek.suse.com/11/projects/242" target="_blank">Hackweek Interstellar</a>
     <div class="icons-devs-networks">
-      <img src="assets/ken.jpg" class="img-circle"/>
-      <img src="assets/cynt.jpg" class="img-circle"/>
-      <img src="assets/tom.jpg" class="img-circle"/>
-      <img src="assets/zvez.jpg" class="img-circle"/>
+      <%= image_tag 'ken.jpg', :class => "img-circle" %>
+      <%= image_tag 'cynt.jpg', :class => "img-circle" %>
+      <%= image_tag 'tom.jpg', :class => "img-circle" %>
+      <%= image_tag 'zvez.jpg', :class => "img-circle" %>
       <a href="https://github.com/digitaltom/trivialine" target="_blank"><i class="fa fa-github"></i></a>
     </div>
   </footer>
