@@ -1,0 +1,117 @@
+/* stylesheet */
+/* External libraries */
+@import url(http://fonts.googleapis.com/css?family=Lobster);
+
+
+/* layout */
+body {
+  margin: 0;
+  padding: 0;
+  font-size: 14px;
+  color: #fff;
+  background: #00c7c9;
+  font-family: arial;
+}
+
+header {
+  background: #000;
+  height: 60px;
+  padding: 1.3em;
+  box-sizing: border-box;
+}
+
+header img {
+  display: inline-block;
+  text-align: left;
+  margin-top: -1em
+}
+
+section {
+  width: 100%
+}
+
+footer {
+  background: #1a4d3a;
+  height: 60px;
+  font-size: 0.8em;
+  padding: 2em;
+  box-sizing: border-box;
+  color: #9dccbb
+}
+
+footer a {
+ text-decoration: none;
+ margin: 0
+}
+
+footer .icons-devs-networks {
+  float: right;
+  margin-top: -0.2em;
+  font-size: 3em
+}
+
+.img-circle {
+  border-radius: 100%
+}
+
+footer img {
+  margin-right: 0.1em;
+  height: 30px
+}
+
+a {
+  color: #fff
+}
+
+.container {
+  width: 990px;
+  margin: 0 auto;
+}
+
+/* typo */
+h1 {
+  color: #fff;
+  font-family: 'Lobster', cursive;
+  font-size: 1.2em;
+}
+
+/* lists */
+
+header li {
+  list-style: none;
+}
+header ul.horizontal {
+  float: right;
+  margin: 0
+}
+ul.horizontal li {
+  display: inline-block;
+  padding-right: 0.5em;
+  padding-top: 0
+}
+
+/* buttons */
+.btn-default {
+  background: transparent;
+}
+.btn-default:hover {
+  color: #999;
+}
+
+.btn-action {
+  background: #eb615f;
+}
+.btn-action:hover {
+  background: #c83f3d;
+}
+
+.btn-default, .btn-action {
+  border: 1px solid #eb615f;
+  border-radius: 4px;
+  color: #fff;
+  font-family: 'Lobster', cursive;
+  font-size: 1.2em;
+  padding: 5px 10px;
+  text-decoration: none;
+}
+

@@ -5,10 +5,36 @@
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
+  <link href="/assets/favicon.png" rel="shortcut icon" type="image/vnd.microsoft.icon">
 </head>
 <body>
-
-<%= yield %>
-
+  <header>
+    <div class="container">
+      <img src="assets/logo.png" />
+      <ul class="horizontal">
+        <li>
+          <a href="#" id="howto" class="btn-default">How to</a>
+        </li>
+        <li>
+          <a href="#" id="play" class="btn-action" >Play</a>
+        </li>
+      </ul>
+    </div>
+  </header>
+  <section>
+    <div class="container">
+      <%= yield %>
+    </div>
+  </section>
+  <footer>
+    Designed and developed by CKTZ team for SUSE <a href="https://hackweek.suse.com/11/projects/242" target="_blank">Hackweek Interstellar</a>
+    <div class="icons-devs-networks">
+      <img src="assets/ken.jpg" class="img-circle"/>
+      <img src="assets/cynt.jpg" class="img-circle"/>
+      <img src="assets/tom.jpg" class="img-circle"/>
+      <img src="assets/zvez.jpg" class="img-circle"/>
+      <a href="https://github.com/digitaltom/trivialine" target="_blank"><i class="fa fa-github"></i></a>
+    </div>
+  </footer>
 </body>
 </html>
