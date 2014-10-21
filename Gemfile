@@ -28,6 +28,7 @@ end
 
 group :development do
   gem 'byebug', require: false
+  gem 'haml-rails'
 end
 
 group :production do

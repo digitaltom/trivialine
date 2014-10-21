@@ -1,0 +1,24 @@
+%p#notice= notice
+
+%p
+  %b Question:
+  = @question.question
+%p
+  %b Answer1:
+  = @question.answer1
+%p
+  %b Answer2:
+  = @question.answer2
+%p
+  %b Answer3:
+  = @question.answer3
+%p
+  %b Answer4:
+  = @question.answer4
+%p
+  %b Solution:
+  = @question.solution
+
+= link_to 'Edit', edit_admin_question_path(@question)
+\|
+= link_to 'Back', admin_questions_path

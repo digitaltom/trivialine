@@ -5,4 +5,8 @@ Rails.application.routes.draw do
   get '/game/socket' => 'game#socket'
   get '/game/start' => 'game#start'
 
+  namespace :admin do
+    resources :questions
+  end
+
 end

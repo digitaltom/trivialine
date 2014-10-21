@@ -1,0 +1,29 @@
+%h1 Listing questions
+
+%table
+  %tr
+    %th Question
+    %th Answer1
+    %th Answer2
+    %th Answer3
+    %th Answer4
+    %th Solution
+    %th
+    %th
+    %th
+
+  - @questions.each do |question|
+    %tr
+      %td= question.question
+      %td= question.answer1
+      %td= question.answer2
+      %td= question.answer3
+      %td= question.answer4
+      %td= question.solution
+      %td= link_to 'Show', [:admin, question]
+      %td= link_to 'Edit', edit_admin_question_path(question)
+      %td= link_to 'Destroy', [:admin, question], :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Question', new_admin_question_path
