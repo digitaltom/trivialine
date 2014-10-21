@@ -13,7 +13,12 @@ $(document).on('click', '#join_game', function () {
 
 
 $(document).on('click', '#chat_send', function () {
-    socket_send('chat', {message: $('#chat_input').val()})
+  socket_send('chat', {message: $('#chat_input').val()})
+})
+
+
+$(document).on('click', '#start_game', function () {
+  $.get("game/start")
 })
 
 
@@ -38,6 +43,7 @@ function message_handler(msg) {
 function logged_in() {
   $('#player-name').hide()
   $('#chat').show()
+  $('#start_game').show()
 }
 
 
@@ -50,7 +56,12 @@ function update_players(players) {
 
 
 function show_question(question) {
-
+  $('#question').html(question['question'])
+  $('ul#answers').html('')
+  question['answers'].forEach(function (answer) {
+    $('ul#answers').append('<li>' + answer + '</li>')
+  })
+  $('#game').show()
 }
 
 
