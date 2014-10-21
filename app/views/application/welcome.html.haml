@@ -1,27 +1,29 @@
-#player-name
-  Your name:
-  %input{name: 'player_name', id: 'player_name'}
-  %button{id: 'join_game'}
-    Join
+.testArea.container
+  %h1 TEST AREA
+  #player-name
+    Your name:
+    %input{name: 'player_name', id: 'player_name'}
+    %button{id: 'join_game'}
+      Join
 
 
-%br
+  %br
 
-Players waiting:
-%ul#players
-  - @players.each do |name|
-    %li= name
+  Players waiting:
+  %ul#players
+    - @players.each do |name|
+      %li= name
 
-#chat.hidden
-  #chat-controls
-    %input{name: 'chat', id: 'chat_input'}
-    %button{id: 'chat_send'}
-      Say
-  #chat-content
+  #chat.hidden
+    #chat-controls
+      %input{name: 'chat', id: 'chat_input'}
+      %button{id: 'chat_send'}
+        Say
+    #chat-content
 
 
-%button.hidden{id: 'start_game'}
-  Start game
+  %button.hidden{id: 'start_game'}
+    Start game
 
 
 #game.hidden
@@ -29,7 +31,9 @@ Players waiting:
   %ul#answers
 
 %section#homepage
-  %article#space.parallax-img-container
+  %article#space
+    .container.parallax-img-container
+
   %article#sky.parallax-img-container
   %article#city.parallax-img-container
   %article#ocean.parallax-img-container
