@@ -7,9 +7,10 @@ Your name:
 
 %br
 
-Players:
-#players
-  = @players
+Players waiting:
+%ul#players
+  - @players.each do |player|
+    %li= player['name']
 
 
 = image_tag 'site_mockup.jpg'

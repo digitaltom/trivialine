@@ -13,7 +13,13 @@ $(document).on('click', '#join_game', function () {
 
 function message_handler (msg) {
   console.log('Game Socket incoming:: ' + msg.data)
+  message = JSON.parse(msg.data)
 
-  $('#players').html(msg.data)
+  if (message['players']) {
+    $('ul#players').html('')
+    message['players'].forEach(function(player) {
+      $('ul#players').append('<li>' + player + '</li>')
+    })
+  }
 
 }

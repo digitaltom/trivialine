@@ -40,11 +40,11 @@ class GameController < ApplicationController
           REDIS.srem :players, player_name
           player_name = content[:name]
           REDIS.sadd :players, content[:name]
-          REDIS.publish 'game', { players: REDIS.smembers( :players ) }
+          REDIS.publish 'game', { players: REDIS.smembers( :players ) }.to_json
         else
           logger.debug "Unhandled socket message type: #{type}"
           #tubesock.send_data 'direct'
-          REDIS.publish 'game', { relay: message }
+          REDIS.publish 'game', { relay: message }.to_json
         end
 
       end
