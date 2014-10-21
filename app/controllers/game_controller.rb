@@ -17,6 +17,8 @@ class GameController < ApplicationController
 
             # Outgoing Types:
             # players: []
+            # question: { category: '', id: '', question: '', answers: [] }
+            # chat: { sender: '', message: '' }
 
             logger.debug "Outgoing websocket to #{player_name}: #{message}"
             tubesock.send_data message
@@ -33,7 +35,8 @@ class GameController < ApplicationController
         type, content = message[:type].to_sym, message[:content]
 
         # Types:
-        # join, content: {name: ''}
+        # :join, content: { name: '' }
+        # :chat, content: { message: '' }
 
         case type
         when :join
@@ -51,7 +54,7 @@ class GameController < ApplicationController
 
       end
 
-      # stop listening when client leaves
+      # stop redis subscriber when client leaves
       tubesock.onclose do
         logger.debug "Socket close from: #{player_name}"
         REDIS.srem :players, player_name
@@ -66,13 +69,8 @@ class GameController < ApplicationController
 
   def start
     question = Question.order('RANDOM()').first
-    REDIS.publish 'game', { question: {category: 'xxx',
-                                       id: question.id,
-                                       question: question.question,
-                                       answers: [question.answer1, question.answer2, question.answer3, question.answer4]
-                          } }.to_json
-    redirect_to root_path
-
+    REDIS.publish 'game', question.to_socket_json
+    render( nothing: true )
   end
 
 
