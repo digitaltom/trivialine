@@ -53,10 +53,22 @@ class GameController < ApplicationController
       tubesock.onclose do
         logger.debug "Socket close from: #{player_name}"
         REDIS.srem :players, player_name
+        REDIS.publish 'game', { players: REDIS.smembers( :players ) }.to_json
         redis_thread.kill
       end
 
     end
+
+  end
+
+
+  def start
+
+    REDIS.publish 'game', { question: {category: 'xxx',
+                                       question: 'yyy',
+                                       answers: ['1', '2', '3', '4']
+                          } }.to_json
+    redirect_to root_path
 
   end
 

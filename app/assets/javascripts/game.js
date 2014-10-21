@@ -11,20 +11,35 @@ $(document).on('click', '#join_game', function () {
 })
 
 
-function message_handler (msg) {
+function message_handler(msg) {
   console.log('Game Socket incoming:: ' + msg.data)
   message = JSON.parse(msg.data)
 
   if (message['players']) {
-    update_players (message['players'])
+    update_players(message['players'])
+  } else if (message['question']) {
+    show_question(message['question'])
+  } else if (message['answer']) {
+    show_answer(message['answer'])
+    // if answer is correct, render next question
   }
 
 }
 
 
-function update_players (players) {
+function update_players(players) {
   $('ul#players').html('')
-  message['players'].forEach(function(player) {
+  message['players'].forEach(function (player) {
     $('ul#players').append('<li>' + player + '</li>')
   })
+}
+
+
+function show_question(question) {
+
+}
+
+
+function show_answer(answer) {
+
 }
