@@ -8,5 +8,6 @@ Rails.application.routes.draw do
   namespace :admin do
     resources :questions
   end
+  get '/admin' => 'admin/base#index'
 
 end
