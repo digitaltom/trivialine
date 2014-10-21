@@ -4,8 +4,6 @@ ruby '2.0.0'
 
 gem 'rails', '~> 4.1.0'
 
-gem 'sass-rails', '~> 4.0.3'
-gem 'coffee-rails', '~> 4.0.0'
 gem 'uglifier', '>= 1.3.0'
 gem 'therubyracer', platforms: :ruby
 gem 'haml'
@@ -14,6 +12,9 @@ gem 'puma'
 gem 'tubesock'
 gem 'heroku'
 gem 'redis'
+
+gem 'less-rails'
+gem 'font-awesome-less'
 
 gem 'jquery-rails'
 gem 'turbolinks'
