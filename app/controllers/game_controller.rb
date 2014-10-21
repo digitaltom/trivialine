@@ -65,10 +65,11 @@ class GameController < ApplicationController
 
 
   def start
-
+    question = Question.order('RANDOM()').first
     REDIS.publish 'game', { question: {category: 'xxx',
-                                       question: 'yyy',
-                                       answers: ['1', '2', '3', '4']
+                                       id: question.id,
+                                       question: question.question,
+                                       answers: [question.answer1, question.answer2, question.answer3, question.answer4]
                           } }.to_json
     redirect_to root_path
 
