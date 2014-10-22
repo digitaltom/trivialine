@@ -4,7 +4,10 @@ class Question < ActiveRecord::Base
     { question: { category: 'xxx',
                   id: id,
                   question: question,
-                  answers: [answer1, answer2, answer3, answer4]
+                  answers: [{ answer: answer1, id: 1},
+                            { answer: answer2, id: 2},
+                            { answer: answer3, id: 3},
+                            { answer: answer4, id: 4}]
                 }
     }.to_json
 

@@ -58,8 +58,8 @@ function update_players(players) {
 function show_question(question) {
   $('#question').html(question['question'])
   $('ul#answers').html('')
-  question['answers'].forEach(function (answer) {
-    $('ul#answers').append('<li>' + answer + '</li>')
+  shuffle(question['answers']).forEach(function (answer) {
+    $('ul#answers').append('<li class="answer" data-answer-id="' + answer['id'] + '">' + answer['answer'] + '</li>')
   })
   $('#game').show()
 }
@@ -72,4 +72,9 @@ function show_answer(answer) {
 
 function show_chat(chat) {
   $('#chat-content').append(chat['sender'] + ': ' + chat['message'] + '<br/>')
+}
+
+
+function shuffle(array) {
+  return array.sort( function () { return (Math.round(Math.random())-0.5) } )
 }
