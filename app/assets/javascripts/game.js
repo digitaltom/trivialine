@@ -8,6 +8,7 @@ $(document).on('click', '#join_game', function () {
     logged_in()
   }
   socket.onmessage = message_handler
+  socket.onclose = logged_out
 
 })
 
@@ -50,6 +51,12 @@ function logged_in() {
   $('#player-name').hide()
   $('#chat').show()
   $('#start_game').show()
+}
+
+function logged_out() {
+  $('#player-name').show()
+  $('#chat').hide()
+  $('#start_game').hide()
 }
 
 
