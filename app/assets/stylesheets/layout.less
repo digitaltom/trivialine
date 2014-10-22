@@ -32,12 +32,13 @@ section {
 }
 
 footer {
-  background: #1a4d3a;
+  background: @footer;
   height: 60px;
   font-size: 0.8em;
   padding: 2em;
   box-sizing: border-box;
-  color: #9dccbb
+  color: @footer-text;
+  z-index: 2000
 }
 
 footer a {
@@ -61,7 +62,7 @@ footer img {
 }
 
 a {
-  color: #fff
+  color: @white;
 }
 
 .container {
@@ -71,16 +72,5 @@ a {
 
 .hidden {
     display: none;
-}
-
-.testArea {
-  position: fixed;
-  top: 0px;
-  left: 0px;
-  width: 280px;
-  background: rgba(235,90,90,0.5);
-  height: 100%;
-  margin-top: 5em;
-  z-index: 9999
 }
 
