@@ -1,5 +1,4 @@
 $(document).on('click', '#join_game', function () {
-
   socket_close()
   socket_connect()
 
@@ -9,6 +8,10 @@ $(document).on('click', '#join_game', function () {
   }
   socket.onmessage = message_handler
   socket.onclose = logged_out
+
+  $('html,body').animate({
+      scrollTop: $("#ocean").offset().top
+    }, 2000);
 
 })
 
@@ -20,6 +23,7 @@ $(document).on('click', '#chat_send', function () {
 
 $(document).on('click', '#start_game', function () {
   $.get("game/start")
+  $('#homepage').hide()
 })
 
 
@@ -48,7 +52,6 @@ function message_handler(msg) {
 
 
 function logged_in() {
-  $('#player-name').hide()
   $('#chat').show()
   $('#start_game').show()
 }
@@ -69,7 +72,7 @@ function update_players(players) {
 
 
 function show_question(question) {
-  $('#game').hide()
+  $('#gamepage').show()
   $('#question').html(question['question'])
   $('#question').attr('data-question-id', question['id'])
   $('ul#answers').html('')

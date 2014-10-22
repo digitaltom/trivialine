@@ -44,7 +44,7 @@
 				width: 310px;
 			}
 			.prev.disabled, .next.disabled {
-				color: @blue-disabled
+				color: @blue-disabled;
 			}
 		}
 	}
@@ -53,10 +53,32 @@
 #city {
 	height: 550px;
 	background: @city-section;
+	.container {
+		height: 550px;
+	}
 	.how-to-start {
 		width: 250px;
 		margin-top: 100px;
 		color: @sky-text;
+	}
+	.signup-form {
+		background: image-url("city/boat.png") no-repeat;
+		height: 462px;
+		width: 612px;
+		padding-top: 200px;
+		padding-left: 80px;
+		text-transform: uppercase;
+		h4 {
+			margin: 0 0 5px;
+		}
+		input {
+			border-radius: 4px;
+			border: 0;
+			padding: 5px 10px;
+			margin-bottom: 10px;
+			font-size: 1em;
+			color: @inputtext;
+		}
 	}
 }
 
@@ -66,4 +88,20 @@
 	.container {
 		height: 600px;
 	}
+	.online-players {
+		padding-top: 150px;
+		ul {
+			padding: 0;
+			li {
+				list-style: none;
+			}
+		}
+		
+	}
+}
+
+#gamepage {
+  article {
+  	padding-top: 100px;
+  }
 }

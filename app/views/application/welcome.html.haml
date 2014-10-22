@@ -1,38 +1,14 @@
-.testArea.container
-  %h1 
-    TEST AREA
-    %a.btn-action#hideTestArea
-      %i.fa.fa-close
-      hide
-  #player-name
-    Your name:
-    %input{name: 'player_name', id: 'player_name'}
-    %button{id: 'join_game'}
-      Join
 
-
-  %br
-
-  Players waiting:
-  %ul#players
-    - @players.each do |player|
-      %li= player['name']
-
-  #chat.hidden
+#chat.hidden
+  .testArea.container
+    %h1 
+      Chat
     #chat-controls
       %input{name: 'chat', id: 'chat_input'}
       %button{id: 'chat_send'}
         Say
     #chat-content
 
-
-  %button.hidden{id: 'start_game'}
-    Start game
-
-
-  #game.hidden
-    #question
-    %ul#answers
 
 %section#homepage
   %article#space.parallax-img-container
@@ -76,20 +52,34 @@
     = image_tag "city/buildings-3.png", :class => "parallax-move", "data-ps-speed" => "0.5", "data-ps-z-index" =>"3", "data-ps-horizontal-position" => "0" , "data-ps-vertical-position" => "-800"
     
   %article#city.parallax-img-container
-    .container
+    .container.parallax-img-container
       .how-to-start
         %h2 JOIN TO PLAY
         %p
-          Enter your username to start playing TriviaLine
+          Enter your username to join the waiting list to play Trivialine.
+          %br
+          As soon as someone else joins the room you will be able to start the game.
+
+      .parallax-move{"data-ps-speed" => "0.3", "data-ps-z-index" =>"2", "data-ps-horizontal-position" => "350" , "data-ps-vertical-position" => "-300"}
+        .signup-form
+          %h4 Username
+          %input{:type => "text", name: 'player_name', id: 'player_name'}
+          %button.btn-action{id: 'join_game', "data-linkto" => "ocean"}
+            Join
     = image_tag "ocean/wave-1.png", :class => "parallax-move", "data-ps-speed" => "0.2", "data-ps-z-index" =>"1", "data-ps-horizontal-position" => "0" , "data-ps-vertical-position" => "-250"
-    = image_tag "city/boat.png", :class => "parallax-move", "data-ps-speed" => "0.3", "data-ps-z-index" =>"2", "data-ps-horizontal-position" => "600" , "data-ps-vertical-position" => "-100"
-    = image_tag "ocean/wave-2.png", :class => "parallax-move", "data-ps-speed" => "0.4", "data-ps-z-index" =>"3", "data-ps-horizontal-position" => "0" , "data-ps-vertical-position" => "-350"
-    = image_tag "ocean/wave-3.png", :class => "parallax-move", "data-ps-speed" => "0.7", "data-ps-z-index" =>"4", "data-ps-horizontal-position" => "0" , "data-ps-vertical-position" => "-650"
+    
+    = image_tag "ocean/wave-2.png", :class => "parallax-move", "data-ps-speed" => "0.4", "data-ps-z-index" =>"300", "data-ps-horizontal-position" => "0" , "data-ps-vertical-position" => "-350"
+    = image_tag "ocean/wave-3.png", :class => "parallax-move", "data-ps-speed" => "0.7", "data-ps-z-index" =>"400", "data-ps-horizontal-position" => "0" , "data-ps-vertical-position" => "-650"
     
   %article#ocean.parallax-img-container
     .container.parallax-img-container
-      %h1 test title not moving
-      text here that wont move
+      .online-players
+        %h2 Who is online
+        %ul#players
+          - @players.each do |player|
+            %li= player['name']
+        %button.btn-action.hidden{id: 'start_game'}
+          Start game
       = image_tag "ocean/bubbles-1.png", :class => "parallax-move", "data-ps-speed" => "0.3", "data-ps-z-index" =>"1", "data-ps-horizontal-position" => "0" , "data-ps-vertical-position" => "0"
       = image_tag "ocean/bubbles-2.png", :class => "parallax-move", "data-ps-speed" => "0.4", "data-ps-z-index" =>"10", "data-ps-horizontal-position" => "0" , "data-ps-vertical-position" => "-50"
       = image_tag "ocean/bubbles-3.png", :class => "parallax-move", "data-ps-speed" => "0.2", "data-ps-z-index" =>"1", "data-ps-horizontal-position" => "0" , "data-ps-vertical-position" => "100"
@@ -100,6 +90,9 @@
     = image_tag "ocean/seaweed-1.png", :class => "parallax-move", "data-ps-speed" => "0.2", "data-ps-z-index" =>"1", "data-ps-horizontal-position" => "0" , "data-ps-vertical-position" => "-100"
     = image_tag "ocean/seaweed-2.png", :class => "parallax-move", "data-ps-speed" => "0.2", "data-ps-z-index" =>"100", "data-ps-horizontal-position" => "0" , "data-ps-vertical-position" => "-100"
     
-
-
+%section#gamepage
+  %article
+    .container#game.hidden
+      #question
+      %ul#answers
 
