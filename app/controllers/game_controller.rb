@@ -37,6 +37,7 @@ class GameController < ApplicationController
         # Types:
         # :join, content: { name: '' }
         # :chat, content: { message: '' }
+        # :answer, content: { question_id: '', answer_id: '' }
 
         case type
         when :join
@@ -46,6 +47,15 @@ class GameController < ApplicationController
           REDIS.publish 'game', { players: REDIS.smembers( :players ) }.to_json
         when :chat
           REDIS.publish 'game', { chat: {sender: player_name, message: content[:message]} }.to_json
+        when :answer
+          question = Question.find content[:question_id]
+          if question.solution == content[:answer_id].to_i
+            logger.debug "Correct answer to question #{question.id} from user #{player_name}"
+          else
+            logger.debug "Wrong answer to question #{question.id} from user #{player_name}"
+          end
+          # FIXME: just pushing the next question for now
+          REDIS.publish 'game', Question.random.to_socket_json
         else
           logger.debug "Unhandled socket message type: #{type}"
           #tubesock.send_data 'direct'
@@ -68,8 +78,7 @@ class GameController < ApplicationController
 
 
   def start
-    question = Question.order('RANDOM()').first
-    REDIS.publish 'game', question.to_socket_json
+    REDIS.publish 'game', Question.random.to_socket_json
     render( nothing: true )
   end
 

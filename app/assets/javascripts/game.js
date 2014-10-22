@@ -4,7 +4,7 @@ $(document).on('click', '#join_game', function () {
   socket_connect()
 
   socket.onopen = function () {
-    socket_send('join', {name: $('#player_name').val()})
+    socket_send('join', { name: $('#player_name').val() })
     logged_in()
   }
   socket.onmessage = message_handler
@@ -13,12 +13,18 @@ $(document).on('click', '#join_game', function () {
 
 
 $(document).on('click', '#chat_send', function () {
-  socket_send('chat', {message: $('#chat_input').val()})
+  socket_send('chat', { message: $('#chat_input').val() })
 })
 
 
 $(document).on('click', '#start_game', function () {
   $.get("game/start")
+})
+
+
+$(document).on('click', '.answer', function () {
+  socket_send('answer', { question_id: $('#question').attr('data-question-id'),
+    answer_id: $(this).data('answer-id') })
 })
 
 
@@ -57,6 +63,7 @@ function update_players(players) {
 
 function show_question(question) {
   $('#question').html(question['question'])
+  $('#question').attr('data-question-id', question['id'])
   $('ul#answers').html('')
   shuffle(question['answers']).forEach(function (answer) {
     $('ul#answers').append('<li class="answer" data-answer-id="' + answer['id'] + '">' + answer['answer'] + '</li>')
@@ -76,5 +83,7 @@ function show_chat(chat) {
 
 
 function shuffle(array) {
-  return array.sort( function () { return (Math.round(Math.random())-0.5) } )
+  return array.sort(function () {
+    return (Math.round(Math.random()) - 0.5)
+  })
 }

@@ -1,5 +1,9 @@
 class Question < ActiveRecord::Base
 
+  def self.random
+    self.order('RANDOM()').first
+  end
+
   def to_socket_json
     { question: { category: 'xxx',
                   id: id,
