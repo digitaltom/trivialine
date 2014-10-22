@@ -18,6 +18,7 @@ $(document).on('click', '#join_game', function () {
 
 $(document).on('click', '#chat_send', function () {
   socket_send('chat', { message: $('#chat_input').val() })
+  $("#chat_input").val("")
 })
 
 
