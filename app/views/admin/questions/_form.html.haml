@@ -8,21 +8,21 @@
 
   .field
     = f.label :question
-    = f.text_field :question
+    = f.text_field :question, size: 50
   .field
     = f.label :answer1
-    = f.text_field :answer1
+    = f.text_field :answer1, size: 50
   .field
     = f.label :answer2
-    = f.text_field :answer2
+    = f.text_field :answer2, size: 50
   .field
     = f.label :answer3
-    = f.text_field :answer3
+    = f.text_field :answer3, size: 50
   .field
     = f.label :answer4
-    = f.text_field :answer4
+    = f.text_field :answer4, size: 50
   .field
     = f.label :solution
-    = f.number_field :solution
+    = f.number_field :solution, in: 1...5
   .actions
     = f.submit 'Save'
