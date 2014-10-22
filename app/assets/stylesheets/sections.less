@@ -89,23 +89,34 @@
 			}
 		}
 	}	
-	.chatzone-home {
-	  background: rgba(0, 87, 106, 0.5);
-	  bottom: 40px;
-	  border-radius: 10px;
-	  height: 400px;
-	  margin-top: 5em;
-	  padding: 15px 20px;
-	  position: absolute;
-	  right: 50px;
-	  width: 280px;
-	  z-index: 100;
-	}
 }
-
+.chatzone-home {
+  background: rgba(0, 87, 106, 0.5);
+  bottom: 70px;
+  border-radius: 10px;
+  height: 400px;
+  margin-top: 5em;
+  padding: 15px 20px;
+  position: fixed;
+  right: 50px;
+  width: 280px;
+  z-index: 9999;
+  #chat-content {
+  	height: 300px;
+  	overflow-y: scroll;
+  }
+}
 
 #gamepage {
   article {
   	padding-top: 100px;
+  }
+  ul#answers {
+    li {
+    	list-style: none;
+    	background: @blue;
+    	border-radius: 4px;
+    	margin-bottom: 5px;
+    }
   }
 }

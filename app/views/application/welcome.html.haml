@@ -64,7 +64,7 @@
     .container.parallax-img-container
       .online-players
         %h2 Who is online
-        %ul#players
+        %ul#players-names
           - @players.each do |player|
             %li= player['name']
         %button.btn-action.hidden{id: 'start_game'}
@@ -78,18 +78,19 @@
       = image_tag "ocean/submarine.png", :class => "parallax-move", "data-ps-speed" => "2.3", "data-ps-z-index" =>"1", "data-ps-horizontal-position" => "0" , "data-ps-vertical-position" => "0"
     = image_tag "ocean/seaweed-1.png", :class => "parallax-move", "data-ps-speed" => "0.2", "data-ps-z-index" =>"1", "data-ps-horizontal-position" => "0" , "data-ps-vertical-position" => "-100"
     = image_tag "ocean/seaweed-2.png", :class => "parallax-move", "data-ps-speed" => "0.2", "data-ps-z-index" =>"100", "data-ps-horizontal-position" => "0" , "data-ps-vertical-position" => "-100"
-    #chat.hidden
-      .chatzone-home
-        %h3 
-          Chat with other players
-        #chat-controls
-          %input{name: 'chat', id: 'chat_input'}
-          %button.btn-action{id: 'chat_send'}
-            Say
-        #chat-content
+
 %section#gamepage
   %article
     .container#game.hidden
       #question
       %ul#answers
-
+      
+#chat.hidden
+  .chatzone-home
+    %h3 
+      Chat with other players
+    #chat-controls
+      %input{name: 'chat', id: 'chat_input'}
+      %button.btn-action{id: 'chat_send'}
+        Say
+    #chat-content
