@@ -14,7 +14,6 @@ class Question < ActiveRecord::Base
                             { answer: answer4, id: 4}]
                 }
     }.to_json
-
   end
 
 end

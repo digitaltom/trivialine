@@ -56,7 +56,7 @@ function logged_in() {
 function update_players(players) {
   $('ul#players').html('')
   message['players'].forEach(function (player) {
-    $('ul#players').append('<li>' + player + '</li>')
+    $('ul#players').append('<li>' + player['name'] + ' (' + player['score'] + ')</li>')
   })
 }
 

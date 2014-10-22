@@ -5,7 +5,7 @@ class ApplicationController < ActionController::Base
 
 
   def index
-    @players = REDIS.smembers( :players )
+    @players = REDIS.smembers( :players ).map{|p| JSON.parse( p )}
     render :welcome
   end
 

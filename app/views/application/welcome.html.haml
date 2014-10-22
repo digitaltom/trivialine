@@ -15,8 +15,8 @@
 
   Players waiting:
   %ul#players
-    - @players.each do |name|
-      %li= name
+    - @players.each do |player|
+      %li= player['name']
 
   #chat.hidden
     #chat-controls
