@@ -3,19 +3,67 @@
 #space {
 	background: @space-section;
 	height: 700px;
+	.container {
+		height: 700px;
+	}
 }
 
 #sky {
 	height: 800px;
 	background: @sky-section;
+	.instructions {
+		background: image-url("sky/hangingcloud.png");
+		height: 526px;
+		width: 442px;
+		margin-right: auto;
+		margin-left: auto;
+		color: @sky-section;
+		padding-top: 355px;
+		padding-left: 10px;
+		box-sizing: border-box;
+		.instructions-slide {
+			height: 120px;
+			width: 400px;
+			.prev, .next {
+				font-size: 40px;
+				padding-top: 30px;
+				cursor: pointer;
+			}
+			.prev {
+				float: left;
+			}
+			.next {
+				float: right;
+			}
+			.item {
+				float: left;
+				height: 110px;
+				margin: 0 10px;
+				overflow: hidden;
+				text-align: center;
+				width: 310px;
+			}
+			.prev.disabled, .next.disabled {
+				color: @blue-disabled
+			}
+		}
+	}
 }
 
 #city {
-	height: 600px;
+	height: 550px;
 	background: @city-section;
+	.how-to-start {
+		width: 250px;
+		margin-top: 100px;
+		color: @sky-text;
+	}
 }
 
 #ocean {
-	height: 700px;
+	height: 600px;
 	background: @ocean-section;
+	.container {
+		height: 600px;
+	}
 }
