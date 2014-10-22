@@ -10,4 +10,23 @@ $(document).on("ready", function() {
   $("#hideTestArea").on("click", function(){
     $(".testArea").fadeOut();
   });
+
+  // top menu buttons
+  $('.smoothScroll').click(function() {
+    var target = $(this).data("linkto");
+    if($(this).hasData("margin-top")) {
+      var marginTop = $(this).data("margin-top");	
+    } else {
+    	var marginTop = 0;
+    }
+
+    if (target.length) {
+      $('html,body').animate({
+        scrollTop: $("#"+target).offset().top - marginTop
+      }, 2000);
+      return false;
+    }
+  });
 });
+
+
