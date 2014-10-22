@@ -1,9 +1,7 @@
 class GameController < ApplicationController
-
   include Tubesock::Hijack
 
   def socket
-
     hijack do |tubesock|
 
       player = Player.new
@@ -15,9 +13,9 @@ class GameController < ApplicationController
 
       # Each player is using his own redis thread with extra redis connection
       redis_thread = Thread.new do
-        redis = Redis.new(:host => REDIS_URL.host, :port => REDIS_URL.port, :password => REDIS_URL.password)
+        redis = Redis.new(host: REDIS_URL.host, port: REDIS_URL.port, password: REDIS_URL.password)
         redis.subscribe 'game' do |on|
-          on.message do |channel, message|
+          on.message do |_channel, message|
             logger.debug "Outgoing websocket to #{player.name} (#{player.uid}): #{message}"
             tubesock.send_data message
           end
@@ -31,9 +29,9 @@ class GameController < ApplicationController
 
       tubesock.onmessage do |message|
 
-        message = JSON.parse(message, :symbolize_names => true)
+        message = JSON.parse(message, symbolize_names: true)
         logger.debug "Incoming websocket from #{player.name} (#{player.uid}): #{message}"
-        next unless message[:type] && message[:content].kind_of?(Hash)
+        next unless message[:type] && message[:content].is_a?(Hash)
         type, content = message[:type].to_sym, message[:content]
 
         case type
@@ -42,7 +40,7 @@ class GameController < ApplicationController
           player.save
           REDIS.publish 'game', Player.players_socket_json
         when :chat
-          REDIS.publish 'game', { chat: {sender: player.name, message: content[:message]} }.to_json
+          REDIS.publish 'game', { chat: { sender: player.name, message: content[:message] } }.to_json
         when :answer
           question = Question.find content[:question_id]
           if question.solution == content[:answer_id].to_i
@@ -58,7 +56,7 @@ class GameController < ApplicationController
           REDIS.publish 'game', Question.random.to_socket_json
         else
           logger.debug "Unhandled socket message type: #{type}"
-          #tubesock.send_data 'direct'
+          # tubesock.send_data 'direct'
           REDIS.publish 'game', { relay: message }.to_json
         end
 
@@ -73,14 +71,10 @@ class GameController < ApplicationController
       end
 
     end
-
   end
-
 
   def start
     REDIS.publish 'game', Question.random.to_socket_json
-    render( nothing: true )
+    render(nothing: true)
   end
-
-
 end

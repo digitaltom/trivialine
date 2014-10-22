@@ -62,13 +62,14 @@ function update_players(players) {
 
 
 function show_question(question) {
+  $('#game').hide()
   $('#question').html(question['question'])
   $('#question').attr('data-question-id', question['id'])
   $('ul#answers').html('')
   shuffle(question['answers']).forEach(function (answer) {
     $('ul#answers').append('<li class="answer" data-answer-id="' + answer['id'] + '">' + answer['answer'] + '</li>')
   })
-  $('#game').show()
+  $('#game').fadeIn()
 }
 
 

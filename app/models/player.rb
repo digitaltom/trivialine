@@ -1,5 +1,4 @@
 class Player
-
   attr_accessor :name
   attr_accessor :uid
   attr_accessor :score
@@ -10,15 +9,15 @@ class Player
   end
 
   def destroy
-    REDIS.smembers( :players ).each do |p|
-      REDIS.srem( :players, p ) if JSON.parse( p )['uid'] == uid
+    REDIS.smembers(:players).each do |p|
+      REDIS.srem(:players, p) if JSON.parse(p)['uid'] == uid
     end
   end
 
   # Store the player in the active players list in redis
   def save
     destroy
-    REDIS.sadd :players, self.to_json
+    REDIS.sadd :players, to_json
   end
 
   def to_json
@@ -30,12 +29,11 @@ class Player
   end
 
   def self.players_socket_json
-    players = REDIS.smembers( :players )
+    players = REDIS.smembers(:players)
     players = players.map do |p|
-      json = JSON.parse( p )
+      json = JSON.parse(p)
       { name: json['name'], score: json['score'] }
     end
     { players: players }.to_json
   end
-
 end
