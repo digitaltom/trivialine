@@ -1,3 +1,4 @@
+%section#loader
 
 %section#homepage
   %article#space.parallax-img-container
@@ -66,7 +67,7 @@
     .container.parallax-img-container
       .online-players
         %h2 Who is online
-        %ul#players
+        %ul.players-list
           - @players.each do |player|
             %li= player['name']
         %button.btn-action.hidden{id: 'start_game'}
@@ -87,13 +88,25 @@
       #question
       %ul#answers
       
-#chat.hidden
-  .chatzone-home
+#chat.hidden.chatzone
+  #userwrap
+    %i.fa.fa-user
+    Cynthia
+    .close-btn
+      %i.fa.fa-bars
+  #usersListWrap
+    %h3
+      Online Users
+    %ul.players-list
+      - @players.each do |player|
+        %li= player['name']
+  #chatwrap
     %h3 
       Chat with other players
+    #chat-content
     #chat-controls
       %form{action: '#', id: 'chat_send'}
         %input{name: 'chat', id: 'chat_input'}
         %button.btn-action
           Say
-    #chat-content
+    

@@ -8,7 +8,8 @@ $(document).on("ready", function() {
   };
   parallaxImgScroll(parallaxSettings);
 
-  //game page hidden initially
+  //home page and game page hidden initially
+  $("#homepage").hide();
   $("#gamepage").hide();
   
   // for test mode only
@@ -35,9 +36,30 @@ function smoothScroll() {
   }
 }
 
+$(window).on("load", function(){
+  $("#homepage").show();
+  chatWindowSize()
+})
+$(window).on("resize", function(){
+  chatWindowSize()
+})
+
 function showGamePage() {
   $("html, body").animate({ scrollTop: 0 }, 800, function(){
     $('#gamepage').show()
+    $("#home-buttons").hide(function(){
+      $("#game-buttons").show()
+    })
   });
+}
+
+function chatWindowSize() {
+  var windowHeight = $(window).height();
+  var usernameWrapHeight = $("#userwrap").height();
+  var chatWrapHeight = $("#chatwrap").height();
+
+  var newSizeUserList = windowHeight - usernameWrapHeight - chatWrapHeight - 80;
+
+  $("#usersListWrap").height(newSizeUserList)
 }
 

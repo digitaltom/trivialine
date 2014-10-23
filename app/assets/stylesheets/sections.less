@@ -90,20 +90,53 @@
 		}
 	}	
 }
-.chatzone-home {
-  background: rgba(0, 87, 106, 0.5);
-  bottom: 70px;
-  border-radius: 10px;
-  height: 400px;
-  margin-top: 5em;
-  padding: 15px 20px;
+.chatzone {
+  background: rgba(0, 182, 182, 0.5);
+  height: 100%;
+  padding: 0 20px;
   position: fixed;
-  right: 50px;
-  width: 280px;
+  right: 0;
+  top: 0;
+  width: 240px;
   z-index: 9999;
-  #chat-content {
-  	height: 300px;
-  	overflow-y: scroll;
+  #userwrap {
+  	box-sizing: border-box;
+  	height: 60px;
+  	font-size: 20px;
+  	padding-top: 1em;
+  	width: 100%;
+  	.close-btn {
+  		border: 1px solid transparent;
+  		border-radius: 4px;
+  		cursor: pointer;
+  		padding: 6px 10px;
+  		position: absolute;
+  		right: 10px;
+  		top: 10px;
+  	}
+  	.close-btn:hover {
+  		background: @red;
+  		border: 1px solid @white;
+  	}
+  }
+  #usersListWrap {
+  	box-sizing: border-box;
+    border-bottom: 1px solid @dark-blue;
+    padding-bottom: 10px;
+    padding-top: 1em;
+    margin-bottom: 10px;
+  }
+  #chatwrap {
+  	box-sizing: border-box;
+  	height: 350px;
+  	#chat-content {
+	  	height: 280px;
+	  	overflow-y: scroll;
+	  	background: @chatcontent;
+	  	border-radius: 4px;
+	  	color: @black;
+	  	padding: 5px;
+	  }
   }
 }
 
@@ -122,3 +155,5 @@
     }
   }
 }
+
+
