@@ -30,10 +30,11 @@ class Player
 
   def self.players_socket_json
     players = REDIS.smembers(:players)
-    players = players.map do |p|
+    players_hash = {}
+    players.each do |p|
       json = JSON.parse(p)
-      { name: json['name'], score: json['score'] }
+      players_hash[json['name']] = { name: json['name'], score: json['score'] }
     end
-    { players: players }.to_json
+    { players: players_hash }.to_json
   end
 end

@@ -1,20 +1,12 @@
+var username
+
 $(document).on('submit', '#join_game', function () {
   if ($('#player_name').val() != '') {
     socket_close()
     socket_connect()
-
-    socket.onopen = function () {
-      socket_send('join', { name: $('#player_name').val() })
-      logged_in()
-    }
+    socket.onopen = logged_in
     socket.onmessage = message_handler
     socket.onclose = logged_out
-
-    $(".username").html($('#player_name').val())
-
-    $('html,body').animate({
-      scrollTop: $("#ocean").offset().top
-    }, 2000)
   }
   return false
 })
@@ -32,7 +24,6 @@ $(document).on('submit', '#chat_send', function () {
 
 $(document).on('click', '#start_game', function () {
   $.get("game/start")
-  $('#homepage').hide()
 })
 
 
@@ -61,12 +52,19 @@ function message_handler(msg) {
 
 
 function logged_in() {
+  username = $('#player_name').val()
+  socket_send('join', { name: username })
   $('#player-name').hide()
   $('#chat').show()
   $('#start_game').show()
+  $(".username").html(username)
+  $('html,body').animate({
+    scrollTop: $("#ocean").offset().top
+  }, 2000)
 }
 
 function logged_out() {
+  username = ''
   $('#player-name').show()
   $('#chat').hide()
   $('#start_game').hide()
@@ -75,13 +73,16 @@ function logged_out() {
 
 function update_players(players) {
   $('ul.players-list').html('')
-  message['players'].forEach(function (player) {
-    $('ul.players-list').append('<li>' + player['name'] + ' (' + player['score'] + ')</li>')
+  Object.keys(message['players']).forEach(function (player_name) {
+    $('ul.players-list').append('<li>' + player_name + ' (' + message['players'][player_name]['score'] + ')</li>')
+    $("#score").html(message['players'][username]['score'])
+
   })
 }
 
 
 function show_question(question) {
+  $('#homepage').hide()
   showGamePage()
   $('#game').hide()
   $('#question').html(question['question'])
