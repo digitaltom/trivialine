@@ -74,7 +74,7 @@ function logged_out() {
 
 
 function update_players(players) {
-  $('ul#players-names').html('')
+  $('ul.players-list').html('')
   message['players'].forEach(function (player) {
     $('ul.players-list').append('<li>' + player['name'] + ' (' + player['score'] + ')</li>')
   })
