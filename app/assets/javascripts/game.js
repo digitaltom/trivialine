@@ -10,6 +10,8 @@ $(document).on('submit', '#join_game', function () {
     socket.onmessage = message_handler
     socket.onclose = logged_out
 
+    $(".username").html($('#player_name').val())
+
     $('html,body').animate({
       scrollTop: $("#ocean").offset().top
     }, 2000)
@@ -22,6 +24,7 @@ $(document).on('submit', '#chat_send', function () {
   if ($('#chat_input').val() != '') {
     socket_send('chat', { message: $('#chat_input').val() })
     $("#chat_input").val("")
+    $('#chat-content').animate({scrollTop: $('#chat-content').prop("scrollHeight")}, 500);
   }
   return false
 })
@@ -73,7 +76,7 @@ function logged_out() {
 function update_players(players) {
   $('ul#players-names').html('')
   message['players'].forEach(function (player) {
-    $('ul#players').append('<li>' + player['name'] + ' (' + player['score'] + ')</li>')
+    $('ul.players-list').append('<li>' + player['name'] + ' (' + player['score'] + ')</li>')
   })
 }
 
