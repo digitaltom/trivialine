@@ -22,7 +22,7 @@
 		padding-left: 10px;
 		box-sizing: border-box;
 		.instructions-slide {
-			height: 120px;
+			height: 130px;
 			width: 400px;
 			.prev, .next {
 				font-size: 40px;
@@ -37,11 +37,15 @@
 			}
 			.item {
 				float: left;
-				height: 110px;
-				margin: 0 10px;
+				height: 120px;
+				margin: 0 50px;
 				overflow: hidden;
 				text-align: center;
 				width: 310px;
+				h3 {
+					margin-top: 0;
+					font-weight: 600;
+				}
 			}
 			.prev.disabled, .next.disabled {
 				color: @blue-disabled;
@@ -147,7 +151,7 @@
     }
   }
   #question {
-
+    
   }
 }
 
