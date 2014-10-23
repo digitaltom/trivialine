@@ -13,6 +13,7 @@ $(document).on("ready", function() {
   $("#gamepage").hide();
   $("header").hide();
   $("footer").hide();
+  $("#openchat").hide();
   
   // for test mode only
   $("#hideTestArea").on("click", function(){
@@ -21,6 +22,18 @@ $(document).on("ready", function() {
 
   // top menu buttons
   $('.smoothScroll').on("click", smoothScroll);
+
+  // to close the chat room
+  $("#closechat").on("click", function(){
+    closeChatRoom()
+  })
+
+  // to reopen the chat room
+  $("#openchat").on("click", function(){
+    openChatRoom()
+  })
+
+  
 });
 
 
@@ -65,9 +78,18 @@ function showGamePage() {
   });
 }
 
+
 function closeChatRoom() {
-  $("#chat").hide()
+  console.log("sfas")
+  $("#chat").hide();
+  $("#openchat").show();
 }
+
+function openChatRoom() {
+  $("#chat").show()
+  $("#openchat").hide();
+}
+
 
 function chatWindowSize() {
   var windowHeight = $(window).height();
