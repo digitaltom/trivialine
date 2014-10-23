@@ -52,9 +52,10 @@
       .parallax-move{"data-ps-speed" => "0.3", "data-ps-z-index" =>"2", "data-ps-horizontal-position" => "350" , "data-ps-vertical-position" => "-300"}
         .signup-form
           %h4 Username
-          %input{:type => "text", name: 'player_name', id: 'player_name'}
-          %button.btn-action{id: 'join_game', "data-linkto" => "ocean"}
-            Join
+          %form{action: '#', id: 'join_game'}
+            %input{:type => "text", name: 'player_name', id: 'player_name'}
+            %button.btn-action{"data-linkto" => "ocean"}
+              Join
     = image_tag "ocean/wave-1.png", :class => "parallax-move", "data-ps-speed" => "0.2", "data-ps-z-index" =>"1", "data-ps-horizontal-position" => "0" , "data-ps-vertical-position" => "-250"
     
     = image_tag "ocean/wave-2.png", :class => "parallax-move", "data-ps-speed" => "0.4", "data-ps-z-index" =>"300", "data-ps-horizontal-position" => "0" , "data-ps-vertical-position" => "-350"
@@ -90,7 +91,8 @@
     %h3 
       Chat with other players
     #chat-controls
-      %input{name: 'chat', id: 'chat_input'}
-      %button.btn-action{id: 'chat_send'}
-        Say
+      %form{action: '#', id: 'chat_send'}
+        %input{name: 'chat', id: 'chat_input'}
+        %button.btn-action
+          Say
     #chat-content

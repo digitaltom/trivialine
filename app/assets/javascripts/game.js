@@ -1,24 +1,29 @@
-$(document).on('click', '#join_game', function () {
-  socket_close()
-  socket_connect()
+$(document).on('submit', '#join_game', function () {
+  if ($('#player_name').val() != '') {
+    socket_close()
+    socket_connect()
 
-  socket.onopen = function () {
-    socket_send('join', { name: $('#player_name').val() })
-    logged_in()
-  }
-  socket.onmessage = message_handler
-  socket.onclose = logged_out
+    socket.onopen = function () {
+      socket_send('join', { name: $('#player_name').val() })
+      logged_in()
+    }
+    socket.onmessage = message_handler
+    socket.onclose = logged_out
 
-  $('html,body').animate({
+    $('html,body').animate({
       scrollTop: $("#ocean").offset().top
-    }, 2000);
-
+    }, 2000)
+  }
+  return false
 })
 
 
-$(document).on('click', '#chat_send', function () {
-  socket_send('chat', { message: $('#chat_input').val() })
-  $("#chat_input").val("")
+$(document).on('submit', '#chat_send', function () {
+  if ($('#chat_input').val() != '') {
+    socket_send('chat', { message: $('#chat_input').val() })
+    $("#chat_input").val("")
+  }
+  return false
 })
 
 
@@ -65,9 +70,9 @@ function logged_out() {
 
 
 function update_players(players) {
-  $('ul#players').html('')
+  $('ul#players-names').html('')
   message['players'].forEach(function (player) {
-    $('ul#player-names').append('<li>' + player['name'] + ' (' + player['score'] + ')</li>')
+    $('ul#players-names').append('<li>' + player['name'] + ' (' + player['score'] + ')</li>')
   })
 }
 
