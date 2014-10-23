@@ -11,6 +11,8 @@ $(document).on("ready", function() {
   //home page and game page hidden initially
   $("#homepage").hide();
   $("#gamepage").hide();
+  $("header").hide();
+  $("footer").hide();
   
   // for test mode only
   $("#hideTestArea").on("click", function(){
@@ -20,6 +22,22 @@ $(document).on("ready", function() {
   // top menu buttons
   $('.smoothScroll').on("click", smoothScroll);
 });
+
+
+// when the window is load we show the home page and take the final size for the chatroom
+$(window).on("load", function(){
+  $("#homepage").show()
+  $("header").show();
+  $("footer").show();
+  $("#loader").hide()
+  chatWindowSize()
+})
+
+// if the window is resized we take the size for the chatroom
+$(window).on("resize", function(){
+  chatWindowSize()
+})
+
 
 function smoothScroll() {
   var target = $(this).data("linkto");
@@ -36,13 +54,7 @@ function smoothScroll() {
   }
 }
 
-$(window).on("load", function(){
-  $("#homepage").show();
-  chatWindowSize()
-})
-$(window).on("resize", function(){
-  chatWindowSize()
-})
+
 
 function showGamePage() {
   $("html, body").animate({ scrollTop: 0 }, 800, function(){
@@ -51,6 +63,10 @@ function showGamePage() {
       $("#game-buttons").show()
     })
   });
+}
+
+function closeChatRoom() {
+  $("#chat").hide()
 }
 
 function chatWindowSize() {
