@@ -58,6 +58,7 @@ function message_handler(msg) {
 
 
 function logged_in() {
+  $('#player-name').hide()
   $('#chat').show()
   $('#start_game').show()
 }
@@ -72,13 +73,14 @@ function logged_out() {
 function update_players(players) {
   $('ul#players-names').html('')
   message['players'].forEach(function (player) {
-    $('ul#players-names').append('<li>' + player['name'] + ' (' + player['score'] + ')</li>')
+    $('ul#players').append('<li>' + player['name'] + ' (' + player['score'] + ')</li>')
   })
 }
 
 
 function show_question(question) {
   $('#gamepage').show()
+  $('#game').hide()
   $('#question').html(question['question'])
   $('#question').attr('data-question-id', question['id'])
   $('ul#answers').html('')
