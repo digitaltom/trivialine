@@ -66,10 +66,7 @@
   %article#ocean.parallax-img-container
     .container.parallax-img-container
       .online-players
-        %h2 Who is online
-        %ul.players-list
-          - @players.each do |player|
-            %li= player['name']
+        %h2 Wait for some players to start the game
         %button.btn-action.hidden{id: 'start_game'}
           Start game
       = image_tag "ocean/bubbles-1.png", :class => "parallax-move", "data-ps-speed" => "0.3", "data-ps-z-index" =>"1", "data-ps-horizontal-position" => "0" , "data-ps-vertical-position" => "0"
