@@ -1,25 +1,37 @@
+categories:
+  - science
+  - geography
+  - history
+  - sports
+  - art
+  - entertainment
+
 questions:
-    - question : What is the addictive chemical in cigarettes?
-      answer1  : Alcohol
-      answer2  : Carbon Dioxide
-      answer3  : Sodium
-      answer4  : Nicotine
-      solution : 4
-    - question : What country did King Hussein rule?
-      answer1  : Vietnam
-      answer2  : Jordan
-      answer3  : England
-      answer4  : Canada
-      solution : 2
-    - question : Which war was concluded by the Treaty of Utrecht?
-      answer1  : World War I
-      answer2  : The War Of Austrian Succession
-      answer3  : War Of Spanish Succession
-      answer4  : The Thirty Years' War
-      solution : 3
-    - question : How many members of the 2004 Red Sox had previously won a World Series?
-      answer1  : 2 Members
-      answer2  : 7 Members
-      answer3  : 4 Members
-      answer4  : Zero
-      solution : 1
+  - question : What is the addictive chemical in cigarettes?
+    answer1  : Alcohol
+    answer2  : Carbon Dioxide
+    answer3  : Sodium
+    answer4  : Nicotine
+    solution : 4
+    category : science
+  - question : What country did King Hussein rule?
+    answer1  : Vietnam
+    answer2  : Jordan
+    answer3  : England
+    answer4  : Canada
+    solution : 2
+    category : history
+  - question : Which war was concluded by the Treaty of Utrecht?
+    answer1  : World War I
+    answer2  : The War Of Austrian Succession
+    answer3  : War Of Spanish Succession
+    answer4  : The Thirty Years' War
+    solution : 3
+    category : history
+  - question : How many members of the 2004 Red Sox had previously won a World Series?
+    answer1  : 2 Members
+    answer2  : 7 Members
+    answer3  : 4 Members
+    answer4  : Zero
+    solution : 1
+    category : sports

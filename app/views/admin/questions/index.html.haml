@@ -8,6 +8,7 @@
     %th Answer3
     %th Answer4
     %th Solution
+    %th Category
     %th
     %th
     %th
@@ -20,6 +21,7 @@
       %td= question.answer3
       %td= question.answer4
       %td= question.solution
+      %td= question.category.name if question.category
       %td= link_to 'Show', [:admin, question]
       %td= link_to 'Edit', edit_admin_question_path(question)
       %td= link_to 'Destroy', [:admin, question], :method => :delete, :data => { :confirm => 'Are you sure?' }

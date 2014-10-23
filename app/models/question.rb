@@ -1,4 +1,7 @@
 class Question < ActiveRecord::Base
+
+  belongs_to :category
+
   def self.random
     order('RANDOM()').first
   end

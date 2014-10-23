@@ -24,5 +24,10 @@
   .field
     = f.label :solution
     = f.number_field :solution, in: 1...5
+  .field
+    - categories_array = Category.all.map { |c| [c.name, c.id] }
+    = f.label :category
+    = f.select(:category_id, options_for_select(categories_array, @question.category_id))
+
   .actions
     = f.submit 'Save'

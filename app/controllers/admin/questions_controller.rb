@@ -70,6 +70,6 @@ class Admin::QuestionsController < Admin::BaseController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def question_params
-    params.require(:question).permit(:question, :answer1, :answer2, :answer3, :answer4, :solution)
+    params.require(:question).permit(:question, :answer1, :answer2, :answer3, :answer4, :solution, :category_id)
   end
 end

@@ -6,12 +6,20 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-questions = YAML.load(File.open(File.join(Rails.root, 'config', 'questions.yml')))
-questions['questions'].each do  |question|
-  Question.create(question: question['question'],
+seeds = YAML.load(File.open(File.join(Rails.root, 'config', 'questions.yml')))
+
+seeds['categories'].each do  |cat|
+  Category.find_or_create_by(name: cat)
+end
+
+seeds['questions'].each do  |question|
+  Question.find_or_create_by(question: question['question'],
                   answer1: question['answer1'],
                   answer2: question['answer2'],
                   answer3: question['answer3'],
                   answer4: question['answer4'],
-                  solution: question['solution'])
+                  solution: question['solution'],
+                  category_id: Category.find_by(name: question['category']).id)
 end
+
+
