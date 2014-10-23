@@ -79,7 +79,7 @@ function update_players(players) {
 
 
 function show_question(question) {
-  $('#gamepage').show()
+  showGamePage()
   $('#game').hide()
   $('#question').html(question['question'])
   $('#question').attr('data-question-id', question['id'])

@@ -1,5 +1,7 @@
 // functions for animations in general
 $(document).on("ready", function() {
+
+  // Parallax initiation
   var parallaxSettings = { 
     initialOpacity: 1,
     opacitySpeed: 1
@@ -31,5 +33,11 @@ function smoothScroll() {
       scrollTop: $("#"+target).offset().top - marginTop
     }, 2000);
   }
+}
+
+function showGamePage() {
+  $("html, body").animate({ scrollTop: 0 }, 800, function(){
+    $('#gamepage').show()
+  });
 }
 
