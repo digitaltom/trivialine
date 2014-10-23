@@ -10,6 +10,8 @@ $(document).on('submit', '#join_game', function () {
     socket.onmessage = message_handler
     socket.onclose = logged_out
 
+    $(".username").html($('#player_name').val())
+
     $('html,body').animate({
       scrollTop: $("#ocean").offset().top
     }, 2000)
