@@ -4,7 +4,8 @@ class Question < ActiveRecord::Base
   validates_presence_of :category
 
   def self.random
-    order('RANDOM()').first
+    offset = rand(Question.count)
+    Question.offset(offset).first
   end
 
   def to_hash
