@@ -102,7 +102,6 @@ function countdown_nextquestion() {
   if(countdown_value == 0) {
     stop_countdown()
     // change to next question
-    console.log("next question")
     show_question(message['question'])
   } 
 }
@@ -119,7 +118,7 @@ function show_question(question) {
   $('ul#answers').html('')
   shuffle(question['answers']).forEach(function (answer) {
     $('ul#answers').append('<li class="answer" data-answer-id="' + answer['id'] + '">' + answer['answer'] + '</li>'),
-    $(".category").html(question['category'])
+    $(".category").html('<div class="' + question['category'] + '"></div><h4>' + question['category'] + '</h4>')
   })
   $('#game').fadeIn()
 

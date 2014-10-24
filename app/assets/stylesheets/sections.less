@@ -192,6 +192,7 @@
     	display: block;
     	padding: 7px 10px;
     	cursor: pointer;
+      box-sizing: border-box;
     }
     li:hover {
     	background: @sky-section;
@@ -212,11 +213,38 @@
 	    font-size: 1em;
 	    height: 120px;
 	    width: 100%;
+      box-sizing: border-box;
 	  }	
 	  .category {
 	  	margin-bottom: 1em;
-	  	width: 70px;
-	  	margin-right: 275px;
+	  	width: 160px;
+	  	margin-right: 185px;
+      .sports, .art, .science, .entertainment, .geography, .history {
+        width: 50px;
+        height: 58px;
+      }
+      .sports {
+        background: image-url("categories/sport-small.png") no-repeat;
+      }
+      .art {
+        background: image-url("categories/art-small.png") no-repeat;
+      }
+      .entertainment {
+        background: image-url("categories/entertainment-small.png") no-repeat;
+      }
+      .history {
+        background: image-url("categories/history-small.png") no-repeat;
+      }
+      .geography {
+        background: image-url("categories/geography-small.png") no-repeat;
+      }
+      .science {
+        background: image-url("categories/science-small.png") no-repeat;
+      }
+      h4 {
+        color: @sky-section;
+        margin-left: 1em
+      }
 	  }
 	  .countdown {
 	  	background: image-url("gamepage/countdown-bg.png") no-repeat;
@@ -227,8 +255,9 @@
 	  	width: 45px;
 	  	padding-top: 8px;
 	  }
-	  .countdown, .category {
+	  .countdown, .category, h4, .sports, .art, .science, .entertainment, .geography, .history {
 	  	display: inline-block;
+      vertical-align: middle;
 	  }
   }
   .categories {
