@@ -1,13 +1,14 @@
 class Question < ActiveRecord::Base
 
   belongs_to :category
+  validates_presence_of :category
 
   def self.random
     order('RANDOM()').first
   end
 
   def to_socket_json
-    { question: { category: 'xxx',
+    { question: { category: category.name,
                   id: id,
                   question: question,
                   answers: [{ answer: answer1, id: 1 },
