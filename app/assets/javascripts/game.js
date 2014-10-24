@@ -103,7 +103,7 @@ function show_answer(answer) {
 
 
 function show_chat(chat) {
-  $('#chat-content').append(chat['sender'] + ': ' + chat['message'] + '<br/>')
+  $('#chat-content ul').append("<li><strong>"+chat['sender'] + '</strong>: ' + chat['message'] + '</li>')
 }
 
 
