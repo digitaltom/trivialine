@@ -68,6 +68,8 @@ function logged_out() {
   $('#player-name').show()
   $('#chat').hide()
   $('#start_game').hide()
+  $('#homepage').show()
+  $('#gamepage').hide()
 }
 
 
