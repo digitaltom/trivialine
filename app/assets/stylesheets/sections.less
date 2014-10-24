@@ -195,6 +195,7 @@
   	height: 100%;
   	vertical-align: top;
   	margin-top: 90px;
+  	width: 400px;
     #question {
 	    background: @gray-questions;
 	    padding: 7px 10px;
@@ -202,10 +203,24 @@
 	    color: @white;
 	    font-size: 1em;
 	    height: 120px;
-	    width: 400px;
+	    width: 100%;
 	  }	
 	  .category {
-	  	margin-bottom: 1em
+	  	margin-bottom: 1em;
+	  	width: 70px;
+	  	margin-right: 275px;
+	  }
+	  .countdown {
+	  	background: image-url("gamepage/countdown-bg.png") no-repeat;
+	  	color: @red;
+	  	font-size: 1.8em;
+	  	text-align: center;
+	  	height: 45px;
+	  	width: 45px;
+	  	padding-top: 8px;
+	  }
+	  .countdown, .category {
+	  	display: inline-block;
 	  }
   }
   .categories {

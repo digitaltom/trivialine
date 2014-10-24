@@ -1,4 +1,7 @@
 var username
+var countdown_timeout = 10
+var countdown_value
+var countdown_interval = null
 
 $(document).on('submit', '#join_game', function () {
   if ($('#player_name').val() != '') {
@@ -25,7 +28,6 @@ $(document).on('click', '#start_game', function () {
   $.get("game/start")
 })
 
-
 $(document).on('click', '.answer', function () {
   socket_send('answer', { question_id: $('#question').attr('data-question-id'),
     answer_id: $(this).data('answer-id') })
@@ -39,9 +41,11 @@ function message_handler(msg) {
   if (message['players']) {
     update_players(message['players'])
   } else if (message['answer']) {
+    stop_countdown()
     show_answer(message['answer'])
     show_question(message['question'])
   } else if (message['question']) {
+    stop_countdown()
     show_question(message['question'])
   } else if (message['chat']) {
     show_chat(message['chat'])
@@ -83,7 +87,28 @@ function update_players(players) {
 }
 
 
+function stop_countdown() {
+  // reset first
+  countdown_value = countdown_timeout + 1; // seconds to change to next question + 1 to start in the right number
+  $(".countdown").html(countdown_timeout);
+  clearInterval(countdown_interval); 
+}
+
+
+function countdown_nextquestion() {
+  
+  countdown_value--;
+  $(".countdown").html(countdown_value);
+  if(countdown_value == 0) {
+    // change to next question
+    console.log("next question")
+  } 
+}
+
+
+
 function show_question(question) {
+
   $('#homepage').hide()
   showGamePage()
   $('#game').hide()
@@ -95,6 +120,9 @@ function show_question(question) {
     $(".category").html(question['category'])
   })
   $('#game').fadeIn()
+
+  countdown_interval = setInterval(function(){countdown_nextquestion()}, 1000);
+
 }
 
 

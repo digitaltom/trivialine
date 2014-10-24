@@ -83,7 +83,6 @@ function showGamePage() {
 
 
 function closeChatRoom() {
-  console.log("sfas")
   $("#chat").hide();
   $("#openchat").show();
 }
