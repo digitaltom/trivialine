@@ -38,11 +38,11 @@ function message_handler(msg) {
 
   if (message['players']) {
     update_players(message['players'])
-  } else if (message['question']) {
-    show_question(message['question'])
   } else if (message['answer']) {
     show_answer(message['answer'])
-    // if answer is correct, render next question
+    show_question(message['question'])
+  } else if (message['question']) {
+    show_question(message['question'])
   } else if (message['chat']) {
     show_chat(message['chat'])
     $('#chat-content').animate({scrollTop: $('#chat-content').prop("scrollHeight")}, 500);
@@ -99,7 +99,8 @@ function show_question(question) {
 
 
 function show_answer(answer) {
-
+  // answer_id is referring to data-answer-id
+  console.log('Answer incoming: ' + answer['answer_id'] + ' ' + answer['player_name'] + ' ' + answer['correct'])
 }
 
 
