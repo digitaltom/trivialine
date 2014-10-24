@@ -14,11 +14,6 @@ $(document).on("ready", function() {
   $("header").hide();
   $("footer").hide();
   $("#openchat").hide();
-  
-  // for test mode only
-  $("#hideTestArea").on("click", function(){
-    $(".testArea").fadeOut();
-  });
 
   // top menu buttons
   $('.smoothScroll').on("click", smoothScroll);
@@ -33,7 +28,6 @@ $(document).on("ready", function() {
     openChatRoom()
   })
 
-  
 });
 
 
@@ -71,25 +65,23 @@ function smoothScroll() {
 }
 
 
-
 function showGamePage() {
   $("html, body").animate({ scrollTop: 0 }, 800, function(){
     $('#gamepage').show()
-    $("#home-buttons").hide(function(){
-      $("#game-buttons").show()
-    })
+    $("#home-buttons").fadeOut()
   });
 }
 
 
 function closeChatRoom() {
-  $("#chat").hide();
-  $("#openchat").show();
+  $("#chat").fadeOut();
+  $("#openchat").show();  
 }
 
+
 function openChatRoom() {
-  $("#chat").show()
-  $("#openchat").hide();
+  $("#openchat").fadeOut('400')
+  $("#chat").fadeIn('400');
 }
 
 
@@ -97,19 +89,15 @@ function chatWindowSize() {
   var windowHeight = $(window).height();
   var usernameWrapHeight = $("#userwrap").height();
   var chatWrapHeight = $("#chatwrap").height();
-
   var newSizeUserList = windowHeight - usernameWrapHeight - chatWrapHeight - 80;
-
   $("#usersListWrap").height(newSizeUserList);
 }
 
+
 function gamepageWindowSize() {
   var windowHeight = $(window).height();
-
   var newSize = windowHeight - 120;
-
   $('#gamepage').height(newSize)
 }
-
 
 

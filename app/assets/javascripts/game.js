@@ -59,7 +59,7 @@ function logged_in() {
   username = $('#player_name').val()
   socket_send('join', { name: username })
   $('#player-name').hide()
-  $('#chat').show()
+  openChatRoom()
   $('#start_game').show()
   $(".username").html(username)
   $('html,body').animate({
