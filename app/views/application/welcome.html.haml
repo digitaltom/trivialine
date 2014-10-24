@@ -71,8 +71,9 @@
     .container.parallax-img-container
       .online-players
         %h2 Wait for some players to start the game
-        %button.btn-action.hidden{id: 'start_game'}
-          Start game
+        .hidden{id: 'start_game'}
+          %button.btn-action
+            Start game
       = image_tag "ocean/bubbles-1.png", :class => "parallax-move", "data-ps-speed" => "0.3", "data-ps-z-index" =>"1", "data-ps-horizontal-position" => "0" , "data-ps-vertical-position" => "0"
       = image_tag "ocean/bubbles-2.png", :class => "parallax-move", "data-ps-speed" => "0.4", "data-ps-z-index" =>"10", "data-ps-horizontal-position" => "0" , "data-ps-vertical-position" => "-50"
       = image_tag "ocean/bubbles-3.png", :class => "parallax-move", "data-ps-speed" => "0.2", "data-ps-z-index" =>"1", "data-ps-horizontal-position" => "0" , "data-ps-vertical-position" => "100"
