@@ -92,7 +92,7 @@ function show_question(question) {
   $('ul#answers').html('')
   shuffle(question['answers']).forEach(function (answer) {
     $('ul#answers').append('<li class="answer" data-answer-id="' + answer['id'] + '">' + answer['answer'] + '</li>'),
-    $(".category").append(question['category'])
+    $(".category").html(question['category'])
   })
   $('#game').fadeIn()
 }
