@@ -100,8 +100,10 @@ function countdown_nextquestion() {
   countdown_value--;
   $(".countdown").html(countdown_value);
   if(countdown_value == 0) {
+    stop_countdown()
     // change to next question
     console.log("next question")
+    show_question(message['question'])
   } 
 }
 
