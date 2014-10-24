@@ -1,5 +1,13 @@
 // functions for animations in general
 $(document).on("ready", function() {
+  // Nice scroll init
+  $("html").niceScroll({
+    cursorwidth: 10,
+    zindex: 9999,
+    scrollspeed: 300,
+    cursoropacitymin: 0,
+    horizrailenabled: true
+  });
 
   // Parallax initiation
   var parallaxSettings = { 
