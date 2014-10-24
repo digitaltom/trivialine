@@ -39,10 +39,11 @@ $(document).on("ready", function() {
 
 // when the window is load we show the home page and take the final size for the chatroom
 $(window).on("load", function(){
-  $("#homepage").show()
-  $("header").show();
-  $("footer").show();
-  $("#loader").hide()
+  $("#loader").fadeOut('400', function() {
+    $("#homepage").fadeIn();
+    $("header").fadeIn();
+    $("footer").fadeIn();  
+  });
   chatWindowSize()
 })
 
