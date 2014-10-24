@@ -47,7 +47,7 @@ class GameController < ApplicationController
             player.score += 1
             logger.debug "Correct answer to question #{question.id} from: #{player.name} (#{player.uid})"
           else
-            player.score -= 1
+            player.score -= 2
             logger.debug "Wrong answer to question #{question.id} from: #{player.name} (#{player.uid})"
           end
           player.save
