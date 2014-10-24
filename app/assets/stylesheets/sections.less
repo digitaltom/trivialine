@@ -137,11 +137,42 @@
 
 
 #gamepage {
-	background: image-url("gamepage/clouds.png") repeat-x;
+	background: image-url("gamepage/clouds.png") repeat-x 0 -50px;
 	height: 100%;
-	margin-bottom: -60px;
   article {
-  	padding-top: 50px;
+  	height: 85%;
+  	width: 100%;
+  }
+  .waves {
+  	height: 15%;
+  	width: 100%;
+  	position: relative;
+  	.wave1 {
+  		background: image-url("ocean/wave-1.png") no-repeat;
+  		width: 2300px;
+  		height: 80px;
+  		z-index: 1;
+  	}
+  	.wave2 {
+  		background: image-url("ocean/wave-2.png") no-repeat;
+  		
+  		height: 80px;
+  		z-index: 1;
+  	}
+  	.wave3 {
+  		background: image-url("ocean/wave-3.png") no-repeat;
+  		width: 2300px;
+  		height: 80px;
+  		z-index: 1;
+  	}
+  	.wave1, .wave2, .wave3 {
+  		position: absolute;
+  		top: 0px;
+  		left: 0px;
+  		width: 2300px;
+  		background-size: 2300px;
+  		height: 100%;
+  	}
   }
   ul#answers {
     li {

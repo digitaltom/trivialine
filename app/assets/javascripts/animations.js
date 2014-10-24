@@ -42,14 +42,16 @@ $(window).on("load", function(){
   $("#loader").fadeOut('400', function() {
     $("#homepage").fadeIn();
     $("header").fadeIn();
-    $("footer").fadeIn();  
+    $("footer").fadeIn();
   });
   chatWindowSize()
+  gamepageWindowSize()
 })
 
 // if the window is resized we take the size for the chatroom
 $(window).on("resize", function(){
   chatWindowSize()
+  gamepageWindowSize()
 })
 
 
@@ -99,6 +101,16 @@ function chatWindowSize() {
 
   var newSizeUserList = windowHeight - usernameWrapHeight - chatWrapHeight - 80;
 
-  $("#usersListWrap").height(newSizeUserList)
+  $("#usersListWrap").height(newSizeUserList);
 }
+
+function gamepageWindowSize() {
+  var windowHeight = $(window).height();
+
+  var newSize = windowHeight - 120;
+
+  $('#gamepage').height(newSize)
+}
+
+
 
