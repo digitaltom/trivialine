@@ -84,45 +84,53 @@
 	.container {
 		height: 600px;
 	}
-	.online-players {
-		padding-top: 150px;
-		ul {
-			padding: 0;
-			li {
-				list-style: none;
-			}
-		}
-	}	
+  .online-players {
+    padding-top: 300px;
+    z-index: 9999;
+    h2 {
+      color: @white;
+      width: 300px
+    }
+  }
 }
 .chatzone {
   background: rgba(0, 182, 182, 0.5);
   height: 100%;
-  padding: 0 20px;
   position: fixed;
   right: 0;
   top: 0;
-  width: 240px;
+  width: 280px;
   z-index: 9999;
   #userwrap {
+    background: @sky-section;
   	box-sizing: border-box;
   	height: 60px;
   	font-size: 20px;
   	padding-top: 1em;
+    padding-left: 20px;
+    padding-right: 20px;
   	width: 100%;
   	.username {
   		display: inline-block;
   	}
+    .close-btn {
+      margin-top: -6px;
+    }
   }
   #usersListWrap {
   	box-sizing: border-box;
     border-bottom: 1px solid @dark-blue;
     padding-bottom: 10px;
     padding-top: 1em;
+    padding-left: 20px;
+    padding-right: 20px;
     margin-bottom: 10px;
   }
   #chatwrap {
   	box-sizing: border-box;
   	height: 350px;
+    padding-left: 20px;
+    padding-right: 20px;
   	#chat-content {
 	  	height: 280px;
 	  	overflow-y: scroll;
