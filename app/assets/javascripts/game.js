@@ -91,7 +91,8 @@ function show_question(question) {
   $('#question').attr('data-question-id', question['id'])
   $('ul#answers').html('')
   shuffle(question['answers']).forEach(function (answer) {
-    $('ul#answers').append('<li class="answer" data-answer-id="' + answer['id'] + '">' + answer['answer'] + '</li>')
+    $('ul#answers').append('<li class="answer" data-answer-id="' + answer['id'] + '">' + answer['answer'] + '</li>'),
+    $(".category").append(question['category'])
   })
   $('#game').fadeIn()
 }
