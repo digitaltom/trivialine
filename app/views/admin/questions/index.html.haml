@@ -1,31 +1,34 @@
-%h1 Listing questions
+.container
+  = link_to 'New Question', new_admin_question_path, :class => "btn-action"
 
-%table
-  %tr
-    %th Question
-    %th Answer1
-    %th Answer2
-    %th Answer3
-    %th Answer4
-    %th Solution
-    %th Category
-    %th
-    %th
-    %th
+  %h1 Listing questions
 
-  - @questions.each do |question|
-    %tr
-      %td= question.question
-      %td= question.answer1
-      %td= question.answer2
-      %td= question.answer3
-      %td= question.answer4
-      %td= question.solution
-      %td= question.category.name if question.category
-      %td= link_to 'Show', [:admin, question]
-      %td= link_to 'Edit', edit_admin_question_path(question)
-      %td= link_to 'Destroy', [:admin, question], :method => :delete, :data => { :confirm => 'Are you sure?' }
+  %table
+    %thead
+      %tr
+        %th Question
+        %th Answer1
+        %th Answer2
+        %th Answer3
+        %th Answer4
+        %th Solution
+        %th Category
+        %th
+        %th
+        %th
+    %tbody
+    - @questions.each do |question|
+      %tr
+        %td= question.question
+        %td= question.answer1
+        %td= question.answer2
+        %td= question.answer3
+        %td= question.answer4
+        %td= question.solution
+        %td= question.category.name if question.category
+        %td= link_to 'Show', [:admin, question], :class => "btn-default"
+        %td= link_to 'Edit', edit_admin_question_path(question), :class => "btn-default"
+        %td= link_to 'Destroy', [:admin, question], :method => :delete, :data => { :confirm => 'Are you sure?' }, :class => "btn-default"
 
-%br
 
-= link_to 'New Question', new_admin_question_path
+  = link_to 'New Question', new_admin_question_path, :class => "btn-action"
