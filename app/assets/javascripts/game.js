@@ -16,7 +16,6 @@ $(document).on('submit', '#chat_send', function () {
   if ($('#chat_input').val() != '') {
     socket_send('chat', { message: $('#chat_input').val() })
     $("#chat_input").val("")
-    $('#chat-content').animate({scrollTop: $('#chat-content').prop("scrollHeight")}, 500);
   }
   return false
 })
@@ -46,6 +45,7 @@ function message_handler(msg) {
     // if answer is correct, render next question
   } else if (message['chat']) {
     show_chat(message['chat'])
+    $('#chat-content').animate({scrollTop: $('#chat-content').prop("scrollHeight")}, 500);
   }
 
 }
